@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title *ngIf="!isLoading"> {{ recette ? 'Edition : ' + recette.titre : 'Nouvelle recette' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" *ngIf="!isLoading">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating">Titre</ion-label>
+            <ion-input type="text" formControlName="titre"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating"><ion-icon name="person"></ion-icon>&nbsp;Nombre de personne</ion-label>
+            <ion-input type="number" formControlName="numberShare"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating"><ion-icon name="build"></ion-icon>&nbsp;Temps de préparation en minute :</ion-label>
+            <ion-input type="number" formControlName="preparationTime"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating"><ion-icon name="receipt"></ion-icon>&nbsp;Ingrédients (séparé par une virgule) :</ion-label>
+            <ion-input type="text" formControlName="ingredient"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item>
+            <ion-label position="floating"><ion-icon name="flame"></ion-icon>&nbsp;Temps de cuisson en minute :</ion-label>
+            <ion-input type="text" formControlName="cookingTime"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-button type="submit" color="success" expand="block" [disabled]="!form.valid" (click)="onEditRecette()">valider</ion-button>
+          <ion-button type="submit" color="primary" expand="block" (click)="cancel()">Annuler</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
